@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react"; 
+import "./App.css";
 
-function App() {
+import Text from "./components/Text";
+import Alert from "./components/Alert";
+
+
+
+function App()
+  {
+  
+  const [alert, setalert] = useState ('null')
+  
+  const showAlert =(message, type)=>{
+    setalert({
+      msg: message,
+      type: type
+    })
+    setTimeout(() => {
+      setalert('null')
+    }, 1500);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <  >
+      
+      <Alert alert={alert} />
+      <div className="container">
+      <Text title = "convert the text" value = "Paste your Text"  alert = {showAlert}/>
+      </div>
+    
+    </>
   );
 }
 
